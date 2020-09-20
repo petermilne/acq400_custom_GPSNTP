@@ -25,11 +25,13 @@ monitor() {
         done
 	sleep 5
 	echo monitor_gpsntp start monitor
+	upcount=0
 	while [ 1 ]
 	do
-		(date;echo;ntpq -p) | fs2xml -k '' -o /dev/shm/gpsntp-new.xml -s /dev/shm/c2rR20
+		(echo $(date) $upcount;echo;ntpq -p) | fs2xml -k '' -o /dev/shm/gpsntp-new.xml -s /dev/shm/c2rR20
                 mv /dev/shm/gpsntp-new.xml /dev/shm/GPSNTP.xml
                 sleep 3
+		upcount=$(($upcount+1))
 	done
 }
 
