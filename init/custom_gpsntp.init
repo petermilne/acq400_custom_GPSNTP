@@ -22,4 +22,4 @@ nice monitor_gpsntp &
 ttyd -p 8080 gpsmon 2>&1 | logger -t gpsmon &
 
 sed -i /var/www/d-tacq/acq_home_page.html \
-	-e"/CUSTOM/i <a class=\"acqLink\" href=\":8080\" onClick=\"return popup\(this, 'href_link'\)\">gpsmon</a>$sep"
+	-e"/CUSTOM/i <a class=\"acqLink\" href=\"/:8080\" onClick=\"return popup\(this, 'href_link'\)\">gpsmon</a>$sep"
