@@ -23,18 +23,12 @@ monitor() {
                 [ $ADDED_WEB -eq 0 ] && [ $(add_web) -eq 1 ] && break
                 sleep 1
         done
-	while [ 1 ]
-	do
-		echo monitor_dds waiting for ioc
-		[ -e /usr/local/epics/scripts/wait_ioc_ready ] && 
-			[ /usr/local/epics/scripts/wait_ioc_ready ] && break
-		sleep 1
-	done
 	sleep 5
+	echo monitor_gpsntp start monitor
 	while [ 1 ]
 	do
-                ntpq -p | fs2xml -k '' -o /dev/shm/gpsntp-new.xml -s /dev/shm/c2rR20
-                mv /dev/shm/gpsntp-new.xml /dev/shm/gpsntp.xml
+		(date;echo;ntpq -p) | fs2xml -k '' -o /dev/shm/gpsntp-new.xml -s /dev/shm/c2rR20
+                mv /dev/shm/gpsntp-new.xml /dev/shm/GPSNTP.xml
                 sleep 3
 	done
 }
