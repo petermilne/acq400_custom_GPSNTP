@@ -14,8 +14,8 @@ killall ntpd
 if [ -e /mnt/local/ntp.conf ]; then
 	cp /mnt/local/ntp.conf /etc
 else
-	cp /usr/local/CARE/ntp.conf /etc/
+	cp /usr/local/CARE/GPSNTP/ntp.conf /etc/
 fi
 /usr/sbin/ntpd.orig -G no
 
-
+nice monitor_gpsntp &
