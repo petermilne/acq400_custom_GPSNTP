@@ -2,7 +2,7 @@
 
 TAP=/var/run/trigger_at.pid
 if [ -e $TAP ]; then
-	inotifywait -e CLOSE_WRITE $TAP 2>&1
+	inotifywait -e CLOSE_WRITE $TAP 2>&1 >/dev/null
 	cat $TAP
 else
 	echo no trigger set
