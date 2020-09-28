@@ -1,10 +1,21 @@
 #!/bin/sh
 
 TAP=/var/run/trigger_at.pid
+SLEEP=1
+while  [ 1 ]; do
 if [ -e $TAP ]; then
-	inotifywait -e CLOSE_WRITE $TAP 2>&1 >/dev/null
-	cat $TAP
+	inotifywait -e CLOSE_WRITE $TAP 2>/dev/null >/dev/null
+	[ -e $TAP ] && cat $TAP
+	SLEEP=0.5
 else
-	echo no trigger set
+	if [ "$SLEEP" = "0.5" ]; then
+		echo DONE
+		SLEEP=2
+	else
+		clear
+		echo no trigger set
+		SLEEP=1
+	fi
 fi
-
+sleep $SLEEP
+done
