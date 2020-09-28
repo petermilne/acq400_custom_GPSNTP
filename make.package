@@ -13,6 +13,8 @@ mkdir -p opkg/usr/local/bin \
 	opkg/usr/local/CARE 
 
 cp -r CARE/* opkg/usr/local/CARE
+cp -a gps opkg/usr/local
+cp ubxtool opkg/usr/local/bin/ubxtool.py
 cp bin/* opkg/usr/local/bin
 cp init/* opkg/usr/local/init
 cp README opkg/usr/local/init/$PKG-README

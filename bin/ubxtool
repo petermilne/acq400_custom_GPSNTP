@@ -1,0 +1,4 @@
+#!/bin/sh
+export PYTHONPATH=$PYTHONPATH:/usr/local
+/usr/local/bin/ubxtool.py
+
