@@ -20,6 +20,9 @@ fi
 
 nice monitor_gpsntp &
 ttyd -p 8080 gpsmon -n 2>&1 | logger -t gpsmon &
+ttyd -p 8081 watch -n 0.5 /usr/local/bin/gps_trigger_mon 2>&1 &
 
 sed -i /var/www/d-tacq/acq_home_page.html \
-	-e"/CUSTOM/i <a class=\"acqLink\" href=\"/:8080\" onClick=\"return popup\(this, 'href_link'\)\">gpsmon</a>$sep"
+ -e"/CUSTOM/i <a class=\"acqLink\" href=\"/:8081\" onClick=\"return popup\(this, 'href_link'\)\">monitor_gps_trg</a>$sep"
+sed -i /var/www/d-tacq/acq_home_page.html \
+ -e"/CUSTOM/i <a class=\"acqLink\" href=\"/:8080\" onClick=\"return popup\(this, 'href_link'\)\">gpsmon</a>$sep"

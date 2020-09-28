@@ -1,0 +1,10 @@
+#!/bin/sh
+
+TAP=/var/run/trigger_at.pid
+if [ -e $TAP ]; then
+	inotifywait -e CLOSE_WRITE $TAP 2>&1
+	cat $TAP
+else
+	echo no trigger set
+fi
+
