@@ -22,7 +22,8 @@ nice monitor_gpsntp &
 ttyd -p 8080 gpsmon -n 2>&1 | logger -t gpsmon &
 ttyd -p 8081 /usr/local/bin/gps_trigger_mon 2>&1 &
 
+SERVER=$(/usr/local/CARE/get-ip-address)
 sed -i /var/www/d-tacq/acq_home_page.html \
- -e"/CUSTOM/i <a class=\"acqLink\" href=\":8081/\" onClick=\"return popup\(this, 'href_link'\)\">monitor_gps_trg</a><br>"
+ -e"/CUSTOM/i <a class=\"acqLink\" href=\"http://${SERVER}:8081/\" onClick=\"return popup\(this, 'href_link'\)\">monitor_gps_trg</a><br>"
 sed -i /var/www/d-tacq/acq_home_page.html \
- -e"/CUSTOM/i <a class=\"acqLink\" href=\":8080/\" onClick=\"return popup\(this, 'href_link'\)\">gpsmon</a><br>"
+ -e"/CUSTOM/i <a class=\"acqLink\" href=\"http://${SERVER}:8080/\" onClick=\"return popup\(this, 'href_link'\)\">gpsmon</a><br>"

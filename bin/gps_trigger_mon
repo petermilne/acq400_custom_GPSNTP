@@ -6,11 +6,11 @@ while  [ 1 ]; do
 if [ -e $TAP ]; then
 	inotifywait -e CLOSE_WRITE $TAP 2>/dev/null >/dev/null
 	[ -e $TAP ] && cat $TAP
-	SLEEP=0.5
+	SLEEP=0.1
 else
-	if [ "$SLEEP" = "0.5" ]; then
+	if [ "$SLEEP" = "0.1" ]; then
 		echo DONE
-		SLEEP=2
+		SLEEP=4
 	else
 		clear
 		echo no trigger set
