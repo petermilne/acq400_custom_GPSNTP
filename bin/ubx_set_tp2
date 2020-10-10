@@ -1,0 +1,10 @@
+#!/bin/sh
+# sets TP2, default 10000 usecs = 100Hz. 0: OFF
+usecs=${1:-10000}
+
+if [ "x$en" != "x0" ]; then
+	ubxtool -z CFG-TP-PERIOD_LOCK_TP2,10000
+	ubxtool -z CFG-TP-TP2_ENA,1
+else
+	ubxtool -z CFG-TP-TP2_ENA,0
+fi
