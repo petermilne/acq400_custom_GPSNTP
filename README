@@ -34,4 +34,9 @@ Prototype system ..
 
 unless overridden by /mnt/local/ntp.conf
 
+#4 TP2 set to 100Hz
+# add to /mnt/local/rc.user
+gps_reset
+sleep 10
+/usr/local/bin/ubx_set_tp2
 
