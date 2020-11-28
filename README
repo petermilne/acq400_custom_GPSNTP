@@ -34,6 +34,13 @@ Prototype system ..
 
 unless overridden by /mnt/local/ntp.conf
 
+The correct executable is /usr/sbin/ntpd.orig
+
+NB: do NOT use /usr/sbin/ntpd
+
+The init file gives you the opportunity to override the default command using a stored script
+
+
 #4 TP2 set to 100Hz
 # add to /mnt/local/rc.user
 gps_reset
