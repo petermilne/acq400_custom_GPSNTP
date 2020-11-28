@@ -17,6 +17,16 @@ if [ -e /mnt/local/ntp.conf ]; then
 else
 	cp /usr/local/CARE/GPSNTP/ntp.conf /etc/
 fi
+
+if [ -e /mnt/local/ublox.conf ]; then
+	/mnt/local/ublox.conf
+else
+	gps_reset
+	sleep 10
+	ubx_set_tp2
+	sleep 5
+fi
+
 # original "full" ntp, 
 # g, --panicgate
 #            Allow the first adjustment to be Big
