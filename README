@@ -40,8 +40,10 @@ NB: do NOT use /usr/sbin/ntpd
 
 The init file gives you the opportunity to override the default command using a stored script
 
+#4 For UBX GPS units, set 
+GPS_UBX=1    in /mnt/local/sysconfig/acq400.sh
 
-#4 TP2 set to 100Hz
+ #1 TP2 set to 100Hz
 # add to /mnt/local/rc.user
 gps_reset
 sleep 10

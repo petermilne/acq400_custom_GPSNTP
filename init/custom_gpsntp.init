@@ -11,6 +11,7 @@ stty -F /dev/ttyPS1 115200
 gpsd -n /dev/ttyPS1
 
 
+
 killall ntpd
 if [ -e /mnt/local/ntp.conf ]; then
 	cp /mnt/local/ntp.conf /etc
@@ -18,13 +19,17 @@ else
 	cp /usr/local/CARE/GPSNTP/ntp.conf /etc/
 fi
 
-if [ -e /mnt/local/ublox.conf ]; then
-	/mnt/local/ublox.conf
-else
-	gps_reset
-	sleep 10
-	ubx_set_tp2
-	sleep 5
+source /mnt/local/sysconfig/acq400.sh
+
+if [ "x$GPS_UBX" != "" ]; then
+	if [ -e /mnt/local/ublox.conf ]; then
+		/mnt/local/ublox.conf
+	else
+		gps_reset
+		sleep 10
+		ubx_set_tp2
+		sleep 5
+	fi
 fi
 
 # original "full" ntp, 
