@@ -21,7 +21,7 @@ fi
 
 source /mnt/local/sysconfig/acq400.sh
 
-if [ "x$GPS_UBX" != "" ]; then
+if [ "x$GPS_UBX" != "x" ]; then
 	if [ -e /mnt/local/ublox.conf ]; then
 		/mnt/local/ublox.conf
 	else
