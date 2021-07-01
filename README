@@ -43,9 +43,7 @@ The init file gives you the opportunity to override the default command using a 
 #4 For UBX GPS units, set 
 GPS_UBX=1    in /mnt/local/sysconfig/acq400.sh
 
- #1 TP2 set to 100Hz
-# add to /mnt/local/rc.user
-gps_reset
-sleep 10
-/usr/local/bin/ubx_set_tp2
+This will automatically reset the UBX device and set a 100Hz output on TP2
+For custom settings, create /mnt/local/ublox.conf
+
 
