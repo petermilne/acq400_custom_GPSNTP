@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ -e /mnt/local/sysconfig/acq400.sh ] && source /mnt/local/sysconfig/acq400.sh
+
 CFG=/sys/kernel/config
 mount | grep $CFG
 [ $? -eq 0 ] || mount -t configfs none $CFG
@@ -7,7 +9,9 @@ UART0=$CFG/device-tree/overlays/uart0
 mkdir -p $UART0
 cat /mnt/dtb.d/acq400_uart0.dtb > $UART0/dtbo
 
-stty -F /dev/ttyPS1 115200
+GPS_BR=${GPS_BR:-115200}
+
+stty -F /dev/ttyPS1 $GPS_BR
 gpsd -n /dev/ttyPS1
 
 
@@ -19,7 +23,6 @@ else
 	cp /usr/local/CARE/GPSNTP/ntp.conf /etc/
 fi
 
-source /mnt/local/sysconfig/acq400.sh
 
 if [ "x$GPS_UBX" != "x" ]; then
 	if [ -e /mnt/local/ublox.conf ]; then
